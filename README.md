@@ -1,6 +1,6 @@
 # Blatten rockfall detection
 
-Few-shot deep learning for detecting small rockfalls in continuous seismic data from the source area of the 2025 Blatten collapse (Lötschental, Switzerland).
+Few-shot deep learning for detecting small rockfalls in continuous seismic data from the Kleines Nesthorn after the 2025 Blatten collapse (Lötschental, Switzerland).
 
 **Status: work in progress.** Code will be released upon publication. Paper in preparation at the Swiss Seismological Service (ETH Zürich).
 
@@ -10,13 +10,13 @@ Large slope failures such as the May 2025 Blatten collapse are often preceded by
 
 <p align="center"><img src="figures/signal_examples.png" width="760" alt="Waveforms and spectrograms of rockfalls, noise and an earthquake"></p>
 
-*Rockfalls (green) next to the noise sources and earthquakes (grey, red) a detector has to reject.*
+*Rockfalls (green) next to the noise sources and earthquakes (grey & red) that a detector has to reject.*
 
 ## Approach
 
-- **Siamese CNN on spectrograms.** It learns an embedding in which rockfalls lie close together and away from noise, and is trained contrastively from a small set of hand-picked events.
-- **Template-based detection.** Each window of continuous data is scored by its angular distance to a set of labelled rockfall templates, so new examples can be added without retraining.
-- **Benchmarks.** Compared against embeddings from a pretrained seismic foundation model and a classical STA/LTA detector, on hand-labelled continuous data.
+- Siamese Neural Network (SNN) on spectrograms: an embedding is learned in which rockfalls lie close together and far away from noise. The network is trained contrastively from a small set of labelled events.
+- Inference pipeline: each window of continuous data is scored by its angular distance to a set of labelled rockfall templates. New examples can be added without retraining.
+- Benchmarks: compared against embeddings from a pretrained seismic foundation model and the performance of a classical STA/LTA detector, on labelled continuous data.
 
 <p align="center"><img src="figures/snn_architecture.png" width="860" alt="Siamese network architecture"></p>
 
